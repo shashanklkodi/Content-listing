@@ -1,0 +1,38 @@
+
+.App {
+    font-family: 'Titillium Web', sans-serif;
+    background-color: #171717;
+    color: #FFFFFF;
+    padding: 20px;
+  }
+  
+  .content-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-around;
+  }
+  
+  .content-item {
+    width: calc(33.33% - 10px);
+  }
+  
+  .content-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .search-bar {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .search-input {
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+  }
+  
