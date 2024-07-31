@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import ReactGA from 'react-ga';
+import { BrowserRouter as Router, useLocation } from 'react-router-dom';
 import ContentGrid from './components/ContentGrid';
 import SearchBar from './components/SearchBar';
 import { fetchData } from './utils/apiService'; 
 import './styles/App.css';
+
+ReactGA.initialize('G-9LFYT4HFZV');
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -23,14 +27,33 @@ const App = () => {
       item.name.toLowerCase().includes(query.toLowerCase())
     );
     setFilteredItems(results);
+
+    ReactGA.event({
+      category: 'User',
+      action: 'Search',
+      label: query
+    });
   };
 
   return (
-    <div className="App">
-      <SearchBar onSearch={handleSearch} />
-      <ContentGrid data={filteredItems} setPage={setCurrentPage} />
-    </div>
+    <Router>
+      <div className="App">
+        <SearchBar onSearch={handleSearch} />
+        <ContentGrid data={filteredItems} setPage={setCurrentPage} />
+        <Tracker />
+      </div>
+    </Router>
   );
+};
+
+const Tracker = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    ReactGA.pageview(location.pathname + location.search);
+  }, [location]);
+
+  return null;
 };
 
 export default App;
