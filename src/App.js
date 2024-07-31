@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactGA from 'react-ga';
-import { BrowserRouter as Router, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
 import ContentGrid from './components/ContentGrid';
 import SearchBar from './components/SearchBar';
 import { fetchData } from './utils/apiService'; 
